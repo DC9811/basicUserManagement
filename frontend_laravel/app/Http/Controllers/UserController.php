@@ -82,7 +82,7 @@ class UserController extends Controller
     public function adduser(Request $request){
         $response = Http::post('http://localhost:8000/register', $request->only(['name', 'email', 'role_id', 'password']));
         if (!$response->json('errors')) {
-            return redirect()->route('showAdmin');
+            return redirect()->route('showAdmin')->with('success','The account has been added.');;
         }
         else {
             $errors = $response->json('errors');
@@ -97,7 +97,7 @@ class UserController extends Controller
      
         $datas = $response->json();
         if(!$response->json('errors')){
-             return view('updateuser', compact('datas'));
+             return view('updateuser', compact('datas'))->with('success','The account has been updated.');;
         }
         else{
             $errors = $response->json('errors');
@@ -127,7 +127,7 @@ class UserController extends Controller
         $response = Http::delete('http://localhost:8000/users/'.$request->id);
 
         if (!$response->json('error')) {
-            return redirect()->route('showAdmin');
+            return redirect()->route('showAdmin')->with('success','The account has been deleted.');
         }
         else{
             $errors = $response->json('errors');
