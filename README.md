@@ -20,5 +20,9 @@ The Admin login credentials:
 Username: admin@admin.com
 Password: Asdf1234*
 
+The User login credentials:
+Username: user@user.com
+Password: Asdf1234*
+
 I believe there may still be some vulnerabilities or unhandled errors due to time constraints. 
 However, I hope this serves as a solid starting point for a more complete User Management system.
