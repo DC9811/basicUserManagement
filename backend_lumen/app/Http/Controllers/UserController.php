@@ -48,7 +48,7 @@ class UserController extends Controller
 
 //Get View
     public function get_users(Request $request){
-        $name = $this->user_name_d($request->login_id);
+        $name = $this->user_name_db($request->login_id);
 
         $users = DB::table('users')->where('id', '!=', $request->id)
                                    ->where('deleted_at', '=', null)
