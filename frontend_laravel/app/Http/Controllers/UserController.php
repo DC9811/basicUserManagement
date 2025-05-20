@@ -59,9 +59,9 @@ class UserController extends Controller
         if (!$login_id) {
             return redirect()->route('showLogin')->withErrors(['error' => 'Unauthorized']);
         }
-        $response = Http::get('http://localhost:8000/users',['id' => $login_id]);
+        $response = Http::get('http://localhost:8000/users',['login_id' => $login_id]);
         $users = collect($response->json());
-
+        
         return view('admin', compact('users'));
     }
 //User
