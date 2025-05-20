@@ -93,8 +93,8 @@ class UserController extends Controller
     public function login_users(Request $request) {
         $user = DB::table('users')->where('email', $request->email)->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['error' => 'Invalid credentials'], 401);
+        if (!$user || !Hash::check($request->password, $user->password) || $user->deleted_at != null) {
+            return response()->json(['errors' => 'Invalid credentials'], 401);
         }
 
         return response()->json(['message' => 'Login successful', 'user' => $user]);
