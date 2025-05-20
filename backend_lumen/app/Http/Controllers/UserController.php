@@ -13,6 +13,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+//Private Methods
     private function userValidator(Request $request, $id = null){
         return Validator::make($request->all(),[
                                                 'name' => 'required',
